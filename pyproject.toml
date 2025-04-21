@@ -1,0 +1,11 @@
+[project]
+name = "validata"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "logging>=0.4.9.6",
+    "polars>=1.27.1",
+    "pyqt6>=6.9.0",
+]

@@ -1,3 +1,5 @@
+import polars as pl
+
 def main():
     print("Test failure!")
 

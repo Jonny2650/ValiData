@@ -1,5 +1,5 @@
 def main():
-    print("Hello from validata!")
+    print("Test failure!")
 
 
 if __name__ == "__main__":

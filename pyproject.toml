@@ -20,4 +20,5 @@ line-length = 180
 show-fixes = true
 
 [tool.ruff.lint]
-extend-select = ["E", "F", "B"]
+extend-select = ["E", "F", "B", "D", "N", "Q", "ANN", "C"]
+ignore = ["D202", "D203", "D204", "D212", "D215", "D400", "D401", "D404", "D406", "D407", "D408", "D409", "D413"]

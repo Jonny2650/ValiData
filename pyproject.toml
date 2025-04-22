@@ -3,9 +3,22 @@ name = "validata"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 dependencies = [
     "logging>=0.4.9.6",
     "polars>=1.27.1",
     "pyqt6>=6.9.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.11.6",
+]
+
+[tool.ruff]
+line-length = 180
+show-fixes = true
+
+[tool.ruff.lint]
+extend-select = ["E", "F", "B", "D", "N", "Q", "ANN", "C"]
+ignore = ["D202", "D203", "D204", "D212", "D215", "D400", "D401", "D404", "D406", "D407", "D408", "D409", "D413"]

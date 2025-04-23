@@ -23,21 +23,38 @@ def create_db_uri(conn_engine:str, username:str, password:str, host:str, port:st
     return uri
 
 
-def create_simple_query(col_list:list, table_name:str, filters:dict)->str:
+def create_simple_query(col_list:list, table_name:str, and_filters:dict = None, or_filters:dict = None)->str:
     """
     Create a SQL query string to select specific columns from a table.
     
     Args:
         col_list (list): List of column names to select.
         table_name (str): The name of the table.#
-        filters (dict): Dictionary of filters to apply to the query.
+        and_filters (dict): Dictionary of and filters to apply to the query. Defaults to None.
+        or_filters (dict): Dictionary of or filters to apply to the query. Defaults to None.
 
     Returns:
         str: The formatted SQL query string.
     """
     
     cols = ", ".join(col_list)
-    query = f"SELECT {cols} FROM {table_name}"
+    
+    if and_filters is not None:
+        and_filters = "".join([f"AND {key} = {value}\n" for key, value in and_filters.items()])
+    else:
+        and_filters = ""
+        
+    if or_filters is not None:
+        or_filters = "".join([f"OR {key} = {value}\n" for key, value in or_filters.items()])
+    else:
+        or_filters = ""
+    
+    query = f"""\
+        SELECT {cols}\n\
+        FROM {table_name}\n\
+        WHERE 1=1\n\
+        {and_filters}\n\
+        {or_filters}"""
     
     return query
 

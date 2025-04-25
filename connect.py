@@ -94,7 +94,7 @@ def read_from_db(uri:str, query:str, partition_on:str = None, partition_num:int 
     return df.lazy()
 
 
-def read_from_csv(file_path:str, schema:dict, has_header:bool = True, separator:str = ",", skip_rows:int = None, with_column_names:list = None)->pl.LazyFrame:
+def read_from_csv(file_path:str, schema:dict, has_header:bool = True, separator:str = ",", skip_rows:int = 0, with_column_names:list = None)->pl.LazyFrame:
     """
     Read data from a CSV file.
     
@@ -111,7 +111,7 @@ def read_from_csv(file_path:str, schema:dict, has_header:bool = True, separator:
     """
     
     df = pl.scan_csv(
-        file_path=file_path,
+        source=file_path,
         schema=schema,
         has_header=has_header,
         separator=separator,
